@@ -1,0 +1,43 @@
+html {
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.game-conteiner {
+    width: 50rem;
+    height: 73rem;
+    position: absolute;
+}
+
+.sky {
+    background-color: lightblue;
+    width: 50rem;
+    height: 58rem;
+    position: absolute;
+}
+
+.ground {
+    background-color: brown;
+    width: 50rem;
+    height: 15rem;
+    position: absolute;
+    top: 58rem;
+}
+
+.bird {
+    background-color: yellow;
+    position: absolute;
+    width: 6rem;
+    height: 4.5rem;
+}
+
+.obstacle {
+    background-color: green;
+    width: 6rem;
+    height: 30rem;
+    position: absolute;
+}
