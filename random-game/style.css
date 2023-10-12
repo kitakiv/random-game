@@ -7,10 +7,15 @@ html {
     box-sizing: inherit;
 }
 
+body {
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
 .game-conteiner {
     width: 50rem;
     height: 73rem;
     position: absolute;
+    overflow: hidden;
 }
 
 .sky {
@@ -38,6 +43,13 @@ html {
     /* transition: 3s; */
 }
 
+.jump {
+    background-image: url(./assets/img/flappy-bird2.png);
+    transform: rotate(-25deg);
+    width: 6rem;
+    height: 4.5rem;
+}
+
 .obstacle {
     background-image: url(./assets/img/flappybird-pipe.png);
     width: 6rem;
@@ -61,7 +73,7 @@ html {
 }
 
 .gap-bird {
-    background-image: url(./assets/img/flappy-bird.png);
+    background-image: url(./assets/img/flappy-bird3.png);
     position: absolute;
     width: 6rem;
     height: 4.5rem;
@@ -69,4 +81,48 @@ html {
     transform: rotate(180deg);
     transition: 3s;
     bottom: 1rem;
+}
+
+.pop-up {
+    font-weight: bold;
+    width: 50rem;
+    height: 73rem;
+    position: absolute;
+    background: rgba(74, 73, 69, 0.286);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    flex-direction: column;
+}
+
+.score {
+    width: 30rem;
+    height: auto;
+    padding: 1rem;
+    background-color: #ffdc60;
+    border-radius: 2rem;
+}
+
+.best {
+    color: #95ff00a3;
+    display: flex;
+    gap: 1rem;
+}
+
+.result {
+    color: black;
+}
+
+.star {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 3rem;
+}
+
+.img {
+    width: 3rem;
+    height: 3rem;
 }

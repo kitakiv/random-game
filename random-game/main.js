@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let birdBottom = 15;
     let gravity = 0.2;
     let gap = 43;
-    let score = 0;
+    let score = -1;
     let isgameover = false
 
     function startGame() {
@@ -32,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
             birdBottom += 4.1;
             bird.style.bottom = birdBottom + 'rem';
             console.log(birdBottom)
+            bird.classList.add('jump')
+            setTimeout(() => {
+                bird.classList.remove('jump')
+            }, 300)
         }
     }
 
