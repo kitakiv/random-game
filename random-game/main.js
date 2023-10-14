@@ -1,15 +1,18 @@
 const button = document.querySelector('.button');
 const popUp = document.querySelector('.pop-up');
-if (JSON.parse(localStorage.getItem('score')) === null) {
-    console.log('of')
-    localStorage.setItem('score', JSON.stringify([]))
-    localStorage.setItem('best', JSON.stringify(0))
-}
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.result').innerHTML = JSON.parse(localStorage.getItem('best'))
     const mas = JSON.parse(localStorage.getItem('score'));
-    for (let i = 0; i < mas.length; i++) {
-        
+    for (let i = 1; i <= mas.length; i++) {
+        const img = document.createElement('img')
+        const star = document.createElement('div');
+        img.src = './assets/img/icons8-pixel-star-481.png';
+        img.alt = 'star';
+        img.classList.add('img')
+        star.classList.add('star');
+        star.innerHTML = `${mas[mas.length - i]}`
+        star.appendChild(img)
+        document.querySelector('.block').appendChild(star);
     }
 })
 button.addEventListener('click', () => {
@@ -121,6 +124,11 @@ button.addEventListener('click', () => {
 
     function gameOver() {
         if (!isgameover){
+            if (JSON.parse(localStorage.getItem('score')) === null) {
+                console.log('of')
+                localStorage.setItem('score', JSON.stringify([]))
+                localStorage.setItem('best', JSON.stringify(0))
+            }
             isgameover = true;
             clearInterval(gameTimerId);
             document.removeEventListener('click', control)

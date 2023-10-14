@@ -18,6 +18,19 @@ body {
     overflow: hidden;
 }
 
+.git {
+    position: absolute;
+    top: 73rem;
+    width: 50rem;
+    height: 10rem;
+    background-color: #95ff00a3;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 4rem;
+}
+
 .sky {
     background-image: url(./assets/img/fb-game-background.png);
     width: 50rem;
@@ -152,4 +165,86 @@ body {
     position: absolute;
     top: -73rem;
     transition: all 2s;
+}
+
+.kit {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.rss {
+    display: block;
+    width: 11rem;
+    height: 4rem;
+    background-image: url("./assets/img/rs_school_js.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+    opacity: 0.7;
+}
+
+@media (max-width: 500px) {
+    html {
+        font-size: 9px;
+    }
+
+    .bird {
+        background-image: url(./assets/img/flappy-bird.png);
+        position: absolute;
+        width: 6.5rem;
+        height: 5rem;
+        z-index: 8;
+        /* transition: 3s; */
+    }
+
+    .gap-bird {
+        background-image: url(./assets/img/flappy-bird3.png);
+        position: absolute;
+        width: 6.5rem;
+        height: 5rem;
+        z-index: 8;
+        transform: rotate(180deg);
+        transition: 3s;
+        bottom: 1rem;
+    }
+
+    .jump {
+        background-image: url(./assets/img/flappy-bird2.png);
+        transform: rotate(-25deg);
+        width: 6.5rem;
+        height: 5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    html {
+        font-size: 8px;
+    }
+
+    .bird {
+        background-image: url(./assets/img/flappy-bird.png);
+        position: absolute;
+        width: 7.18rem;
+        height: 5.7rem;
+        z-index: 8;
+        /* transition: 3s; */
+    }
+
+    .gap-bird {
+        background-image: url(./assets/img/flappy-bird3.png);
+        position: absolute;
+        width: 7.18rem;
+        height: 5.7rem;
+        z-index: 8;
+        transform: rotate(180deg);
+        transition: 3s;
+        bottom: 1rem;
+    }
+
+    .jump {
+        background-image: url(./assets/img/flappy-bird2.png);
+        transform: rotate(-25deg);
+        width: 7.18rem;
+        height: 5.7rem;
+    }
 }
