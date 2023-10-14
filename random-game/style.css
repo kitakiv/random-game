@@ -22,7 +22,7 @@ body {
     position: absolute;
     top: 73rem;
     width: 50rem;
-    height: 10rem;
+    height: 10.6rem;
     background-color: #95ff00a3;
     display: flex;
     padding: 1rem;
@@ -246,5 +246,9 @@ body {
         transform: rotate(-25deg);
         width: 7.18rem;
         height: 5.7rem;
+    }
+
+    .button {
+        font-size: 2rem;
     }
 }
