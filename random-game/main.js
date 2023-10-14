@@ -1,4 +1,19 @@
+const button = document.querySelector('.button');
+const popUp = document.querySelector('.pop-up');
+if (JSON.parse(localStorage.getItem('score')) === null) {
+    console.log('of')
+    localStorage.setItem('score', JSON.stringify([]))
+    localStorage.setItem('best', JSON.stringify(0))
+}
 document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.result').innerHTML = JSON.parse(localStorage.getItem('best'))
+    const mas = JSON.parse(localStorage.getItem('score'));
+    for (let i = 0; i < mas.length; i++) {
+        
+    }
+})
+button.addEventListener('click', () => {
+    popUp.classList.add('hidden')
     const bird = document.querySelector('.bird');
     const gameDisplay = document.querySelector('.game-conteiner');
     const ground = document.querySelector('.ground');
@@ -6,18 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let birdLeft = 22;
     let birdBottom = 15;
     let gravity = 0.2;
-    let gap = 43;
+    let gap = 50;
     let score = -1;
     let isgameover = false
 
     function startGame() {
-        if (birdBottom === 6) {
-            gameOver();
-            clearInterval(timerId);
+        // if (birdBottom === 6) {
+        //     gameOver();
+        //     clearInterval(timerId);
+        // }
+        if (!isgameover) {
+            birdBottom -= gravity;
+            bird.style.bottom = birdBottom + 'rem';
+            bird.style.left = birdLeft + 'rem';
         }
-        birdBottom -= gravity;
-        bird.style.bottom = birdBottom + 'rem';
-        bird.style.left = birdLeft + 'rem';
     }
 
     let gameTimerId = setInterval(startGame, 20);
@@ -40,6 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('click', control)
+    // document.addEventListener('keyup', (e) => {
+    //     if (e.target === 32) {
+    //         control()
+    //     }
+    // })
 
     function generate() {
         let obstacleLeft = 50;
@@ -71,19 +93,21 @@ document.addEventListener('DOMContentLoaded', () => {
             // }
 
             if (obstacleLeft > 20 && obstacleLeft < 28 && birdLeft === 22 && birdBottom < obstacleBottom + 15.3 || birdBottom > obstacleBottom + gap - 20 && obstacleLeft > 20 && obstacleLeft < 28 && birdLeft === 22) {
-                gameOver();
                 clearInterval(timerId);
+                gameOver();
             }
 
-            if (birdBottom === 1) {
-                gameOver();
-                clearInterval(timerId);
-            }
+            // if (birdBottom === 1) {
+            //     gameOver();
+            //     clearInterval(timerId);
+            // }
 
-            if (obstacleLeft < -6) {
+            if (obstacleLeft < 0) {
                 clearInterval(timerId);
-                gameDisplay.removeChild(obstacle);
-                gameDisplay.removeChild(topObctacle);
+                const obstacle = document.querySelector('.obstacle')
+                const topObctacle = document.querySelector('.top-obstacle')
+                    gameDisplay.removeChild(obstacle);
+                    gameDisplay.removeChild(topObctacle);
             }
 
         }
@@ -96,11 +120,29 @@ document.addEventListener('DOMContentLoaded', () => {
     generate()
 
     function gameOver() {
-        clearInterval(gameTimerId);
-        isgameover = true;
-        document.removeEventListener('click', control)
-        bird.classList.add('gap-bird');
-        bird.style.bottom = 0;
-        document.querySelector('.audio-die').play()
+        if (!isgameover){
+            isgameover = true;
+            clearInterval(gameTimerId);
+            document.removeEventListener('click', control)
+            // document.removeEventListener('keyup', control)
+            bird.classList.add('gap-bird');
+            bird.style.bottom = 0;
+            let scoreResult = JSON.parse(localStorage.getItem('score'));
+            if (scoreResult.length >= 10) {
+                scoreResult.shift()
+            }
+            scoreResult.push(score)
+            localStorage.setItem('score', JSON.stringify(scoreResult))
+            let best = scoreResult.reduce((acc, elem) => Math.max(acc, elem), 0);
+            best = Math.max(best, JSON.parse(localStorage.getItem('best')))
+            localStorage.setItem('best', JSON.stringify(best))
+            document.querySelector('.audio-die').play()
+            setTimeout(() => {
+                document.querySelector('.audio-die').pause()
+            }, 1000)
+            setTimeout(() => {
+                location.reload();
+            }, 3001)
+        }
     }
 })

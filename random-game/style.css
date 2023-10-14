@@ -95,6 +95,8 @@ body {
     align-items: center;
     font-size: 5rem;
     flex-direction: column;
+    gap: 2rem;
+    transition: all 2s;
 }
 
 .score {
@@ -125,4 +127,29 @@ body {
 .img {
     width: 3rem;
     height: 3rem;
+}
+
+.button {
+    width: 9rem;
+    height: 5rem;
+    background-color: #95ff00a3;
+    color: white;
+    font-family: 'Pixelify Sans', sans-serif;
+    border-radius: 2rem;
+    border: 0.3rem gray solid;
+    font-size: 2rem;
+    font-weight: 900;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #95ff00f2;
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.hidden {
+    position: absolute;
+    top: -73rem;
+    transition: all 2s;
 }
