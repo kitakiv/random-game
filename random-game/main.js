@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
         img.classList.add('img')
         star.classList.add('star');
         star.innerHTML = `${mas[mas.length - i]}`;
-        if (mas[mas.length - i] >= 20) {
+        if (mas[mas.length - i] >= 50) {
                 star.appendChild(img);
                 img.src = './assets/img/starsilver.png';
                 star.appendChild(img);
                 img.src = './assets/img/icons8-pixel-star-481.png'
                 star.appendChild(img);
         }
-        if (mas[mas.length - i] > 9 && mas[mas.length - i] < 20) {
+        if (mas[mas.length - i] > 9 && mas[mas.length - i] < 50) {
                 star.appendChild(img);
                 img.src = './assets/img/starsilver.png';
                 star.appendChild(img);
@@ -38,7 +38,7 @@ button.addEventListener('click', () => {
     let birdLeft = 22;
     let birdBottom = 15;
     let gravity = 0.2;
-    let gap = 50;
+    let gap = 55;
     let score = -1;
     let isgameover = false
     let vel = 5;
@@ -82,7 +82,7 @@ button.addEventListener('click', () => {
     // })
 
     function generate() {
-        if (gap >= 42 && score > vel) {
+        if (gap >= 43 && score > vel) {
             gap -= 2;
             vel += 5
         }
@@ -136,7 +136,7 @@ button.addEventListener('click', () => {
         let timerId = setInterval(moveObstacle, 20);
         if (!isgameover) {
             if (score > 10) {
-                setTimeout(generate, 2500)
+                setTimeout(generate, 2800)
             } else {
                 setTimeout(generate, 3000)
             }
