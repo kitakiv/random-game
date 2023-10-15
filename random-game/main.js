@@ -82,7 +82,7 @@ button.addEventListener('click', () => {
     // })
 
     function generate() {
-        if (gap >= 43 && score > vel) {
+        if (gap > 45 && score > vel) {
             gap -= 2;
             vel += 5
         }
