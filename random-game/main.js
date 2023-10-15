@@ -4,14 +4,28 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.result').innerHTML = JSON.parse(localStorage.getItem('best'))
     const mas = JSON.parse(localStorage.getItem('score'));
     for (let i = 1; i <= mas.length; i++) {
-        const img = document.createElement('img')
+        let img = document.createElement('img')
         const star = document.createElement('div');
-        img.src = './assets/img/icons8-pixel-star-481.png';
+        img.src = './assets/img/starbronze.png';
         img.alt = 'star';
         img.classList.add('img')
         star.classList.add('star');
-        star.innerHTML = `${mas[mas.length - i]}`
-        star.appendChild(img)
+        star.innerHTML = `${mas[mas.length - i]}`;
+        if (mas[mas.length - i] >= 20) {
+                star.appendChild(img);
+                img.src = './assets/img/starsilver.png';
+                star.appendChild(img);
+                img.src = './assets/img/icons8-pixel-star-481.png'
+                star.appendChild(img);
+        }
+        if (mas[mas.length - i] > 9 && mas[mas.length - i] < 20) {
+                star.appendChild(img);
+                img.src = './assets/img/starsilver.png';
+                star.appendChild(img);
+        }
+        if (mas[mas.length - i].toString().length === 1) {
+                star.appendChild(img)
+        }
         document.querySelector('.block').appendChild(star);
     }
 })
@@ -27,6 +41,7 @@ button.addEventListener('click', () => {
     let gap = 50;
     let score = -1;
     let isgameover = false
+    let vel = 5;
 
     function startGame() {
         // if (birdBottom === 6) {
@@ -67,6 +82,10 @@ button.addEventListener('click', () => {
     // })
 
     function generate() {
+        if (gap >= 42 && score > vel) {
+            gap -= 2;
+            vel += 5
+        }
         let obstacleLeft = 50;
         let randomHeight = Math.random() * 6
         let obstacleBottom = randomHeight;
@@ -116,7 +135,11 @@ button.addEventListener('click', () => {
         }
         let timerId = setInterval(moveObstacle, 20);
         if (!isgameover) {
-            setTimeout(generate, 3000)
+            if (score > 10) {
+                setTimeout(generate, 2500)
+            } else {
+                setTimeout(generate, 3000)
+            }
         }
 
     }
