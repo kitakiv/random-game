@@ -124,7 +124,7 @@ button.addEventListener('click', () => {
             //     clearInterval(timerId);
             // }
 
-            if (obstacleLeft < 0) {
+            if (obstacleLeft < -7) {
                 clearInterval(timerId);
                 const obstacle = document.querySelector('.obstacle')
                 const topObctacle = document.querySelector('.top-obstacle')
@@ -135,11 +135,7 @@ button.addEventListener('click', () => {
         }
         let timerId = setInterval(moveObstacle, 20);
         if (!isgameover) {
-            if (score > 10) {
-                setTimeout(generate, 2800)
-            } else {
-                setTimeout(generate, 3000)
-            }
+                setTimeout(generate, 3000);
         }
 
     }

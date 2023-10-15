@@ -249,6 +249,17 @@ body {
     }
 
     .button {
-        font-size: 1.5rem;
+        font-size: 3.5rem;
+        width: 15rem;
+        height: 8rem;
     }
+
+    .obstacle {
+        width: 7.45rem;
+    }
+
+    .top-obstacle {
+        width: 7.45rem;
+    }
+
 }
