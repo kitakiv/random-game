@@ -75,11 +75,10 @@ button.addEventListener('click', () => {
     }
 
     document.addEventListener('click', control)
-    // document.addEventListener('keyup', (e) => {
-    //     if (e.target === 32) {
-    //         control()
-    //     }
-    // })
+    document.addEventListener('keyup', (e) => {
+        e.preventDefault();
+        control()
+    })
 
     function generate() {
         if (gap > 45 && score > vel) {
@@ -151,7 +150,7 @@ button.addEventListener('click', () => {
             isgameover = true;
             clearInterval(gameTimerId);
             document.removeEventListener('click', control)
-            // document.removeEventListener('keyup', control)
+            document.removeEventListener('keyup', control)
             bird.classList.add('gap-bird');
             bird.style.bottom = 0;
             let scoreResult = JSON.parse(localStorage.getItem('score'));
